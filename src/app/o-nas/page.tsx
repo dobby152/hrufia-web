@@ -27,14 +27,6 @@ const values = [
   },
 ];
 
-const team = [
-  {
-    name: "Karel Vavřík",
-    role: "Vedoucí stavebních prací",
-    description: "Karel má za sebou přes 15 let zkušeností v oboru. Specializuje se na rekonstrukce bytů a rodinných domů.",
-  },
-];
-
 const timeline = [
   { year: "2018", event: "Založení HRUFIA s.r.o." },
   { year: "2019", event: "Rozšíření o malířské služby" },
@@ -107,33 +99,6 @@ export default function ONasPage() {
               <span className="text-amber text-3xl block mb-4">{v.icon}</span>
               <h3 className="font-display text-xl text-charcoal mb-3">{v.title}</h3>
               <p className="text-stone leading-relaxed">{v.description}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Team */}
-        <SectionHeading
-          label="Náš tým"
-          title="Lidé za HRUFIA"
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 mb-32">
-          {team.map((member, i) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-white p-8 rounded-sm border border-charcoal/5"
-            >
-              <div className="w-16 h-16 bg-amber/10 rounded-sm flex items-center justify-center mb-6">
-                <span className="font-display text-amber text-2xl">
-                  {member.name.split(" ").map((n) => n[0]).join("")}
-                </span>
-              </div>
-              <h3 className="font-display text-xl text-charcoal mb-1">{member.name}</h3>
-              <p className="text-amber text-sm font-semibold tracking-wide uppercase mb-4">{member.role}</p>
-              <p className="text-stone leading-relaxed">{member.description}</p>
             </motion.div>
           ))}
         </div>

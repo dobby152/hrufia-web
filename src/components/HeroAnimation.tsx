@@ -49,7 +49,7 @@ const stages = [
   "Zařizování",
 ];
 
-export function HeroAnimation() {
+function HeroAnimationInner({ onComplete }: { onComplete: () => void }) {
   const [activeStage, setActiveStage] = useState(0);
 
   useEffect(() => {
@@ -58,9 +58,10 @@ export function HeroAnimation() {
       setTimeout(() => setActiveStage(2), 3000),
       setTimeout(() => setActiveStage(3), 4200),
       setTimeout(() => setActiveStage(4), 5500),
+      setTimeout(onComplete, 9500),
     ];
     return () => timers.forEach(clearTimeout);
-  }, []);
+  }, [onComplete]);
 
   return (
     <div className="relative">
@@ -425,4 +426,9 @@ export function HeroAnimation() {
       </motion.svg>
     </div>
   );
+}
+
+export function HeroAnimation() {
+  const [cycle, setCycle] = useState(0);
+  return <HeroAnimationInner key={cycle} onComplete={() => setCycle((c) => c + 1)} />;
 }

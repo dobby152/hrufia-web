@@ -48,7 +48,7 @@ export function Navbar() {
               <span className="font-display text-xl tracking-[0.15em] text-charcoal leading-none">
                 HRUFIA
               </span>
-              <span className="text-[9px] tracking-[0.3em] uppercase text-stone-light leading-none mt-0.5">
+              <span className="text-[9px] tracking-[0.3em] uppercase text-stone leading-none mt-0.5">
                 Stavební práce
               </span>
             </div>
@@ -65,7 +65,7 @@ export function Navbar() {
               >
                 <Link
                   href={l.href}
-                  className="relative text-[13px] font-medium text-charcoal/60 hover:text-charcoal transition-colors duration-200 tracking-[0.15em] uppercase group py-2"
+                  className="relative text-[13px] font-medium text-charcoal hover:text-charcoal transition-colors duration-200 tracking-[0.15em] uppercase group py-2"
                 >
                   {l.label}
                   <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-amber group-hover:w-full transition-all duration-300" />

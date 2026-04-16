@@ -30,12 +30,7 @@ export function ServiceCard({
         {/* Top accent line */}
         <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-amber via-amber-light to-amber scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
 
-        {/* Background number */}
-        <span className="absolute top-6 right-6 font-display text-7xl text-charcoal/[0.03] group-hover:text-amber/[0.08] transition-colors duration-700">
-          0{index + 1}
-        </span>
-
-        <div className="relative z-10">
+<div className="relative z-10">
           <div className="w-14 h-14 bg-amber/10 rounded-sm flex items-center justify-center mb-8 group-hover:bg-amber/20 group-hover:scale-110 transition-all duration-500">
             {icon}
           </div>

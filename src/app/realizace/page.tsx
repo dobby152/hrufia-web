@@ -10,7 +10,7 @@ const projects = [
     category: "Rekonstrukce",
     duration: "6 týdnů",
     description: "Kompletní proměna bytu 3+1 včetně nové koupelny, kuchyně a podlah. Moderní skandinávský styl.",
-    color: "bg-[#1a2744]",
+    image: "/real-rekonstrukce-byt.jpg",
   },
   {
     title: "Rekonstrukce koupelny",
@@ -18,7 +18,7 @@ const projects = [
     category: "Rekonstrukce",
     duration: "3 týdny",
     description: "Kompletní přestavba koupelny s walk-in sprchou a velkoplošnými obklady.",
-    color: "bg-[#4a6741]",
+    image: "/real-koupelna.jpg",
   },
   {
     title: "Malování kancelářských prostor",
@@ -26,7 +26,7 @@ const projects = [
     category: "Malování",
     duration: "5 dní",
     description: "Profesionální malování open-space kanceláře o rozloze 450 m². Práce o víkendu bez omezení provozu.",
-    color: "bg-[#8a6f5e]",
+    image: "/real-kancelar.jpg",
   },
   {
     title: "Stěhování rodinného domu",
@@ -34,7 +34,7 @@ const projects = [
     category: "Stěhování",
     duration: "2 dny",
     description: "Kompletní stěhování 5pokojového domu včetně balení, demontáže nábytku a zpětné montáže.",
-    color: "bg-[#5a4a3a]",
+    image: "/real-stehovani.jpg",
   },
   {
     title: "Rekonstrukce kuchyně",
@@ -42,7 +42,7 @@ const projects = [
     category: "Rekonstrukce",
     duration: "4 týdny",
     description: "Nová kuchyňská linka na míru, rozvody vody a elektřiny, obklady a podlaha.",
-    color: "bg-[#3d5a6e]",
+    image: "/real-kuchyne.jpg",
   },
   {
     title: "Vymalování bytu 4+kk",
@@ -50,7 +50,7 @@ const projects = [
     category: "Malování",
     duration: "3 dny",
     description: "Kompletní vymalování bytu včetně přípravy povrchů, tmelení a dvouvrstvého nátěru.",
-    color: "bg-[#6e5a3d]",
+    image: "/real-malovani-byt.jpg",
   },
 ];
 
@@ -74,7 +74,8 @@ export default function RealizacePage() {
               transition={{ delay: i * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className={`${p.color} aspect-[4/3] rounded-sm relative overflow-hidden mb-5`}>
+              <div className="aspect-[4/3] rounded-sm relative overflow-hidden mb-5">
+                <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="inline-block bg-amber text-charcoal text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-sm mb-2">

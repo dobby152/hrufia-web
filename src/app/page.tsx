@@ -164,7 +164,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 bg-charcoal/5 rounded-full px-5 py-2 mb-8"
             >
               <span className="w-2 h-2 bg-amber rounded-full animate-pulse" />
-              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-charcoal/60">
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-charcoal">
                 Rekonstrukce · Malování · Stěhování
               </span>
             </motion.div>
@@ -289,7 +289,7 @@ export default function Home() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2, duration: 0.6 }}
-              className="absolute -top-4 -right-4 bg-amber text-charcoal px-4 py-2 rounded-sm shadow-lg animate-float"
+              className="absolute -bottom-4 -right-4 bg-amber text-charcoal px-4 py-2 rounded-sm shadow-lg animate-float"
             >
               <span className="font-display text-2xl block leading-tight">98%</span>
               <span className="text-[10px] font-medium tracking-wider uppercase opacity-70">Spokojenost</span>

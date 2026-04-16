@@ -19,7 +19,7 @@ const services = [
       "Sádrokartonové příčky a podhledy",
       "Výměna oken a dveří",
     ],
-    image: "🔨",
+    image: "/rekonstrukce.jpg",
   },
   {
     id: "malovani",
@@ -35,7 +35,7 @@ const services = [
       "Lakování dveří a oken",
       "Tapetování",
     ],
-    image: "🎨",
+    image: "/malovani.jpg",
   },
   {
     id: "stehovani",
@@ -51,7 +51,7 @@ const services = [
       "Přeprava po celé ČR",
       "Pojištění přepravovaných věcí",
     ],
-    image: "📦",
+    image: "/stehovani.jpg",
   },
 ];
 
@@ -106,9 +106,8 @@ export default function SluzbyPage() {
                   </Link>
                 </div>
                 <div className={`${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="bg-white rounded-sm shadow-lg border border-charcoal/5 aspect-[4/3] flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber/5 to-transparent" />
-                    <span className="text-8xl relative z-10">{service.image}</span>
+                  <div className="rounded-sm shadow-lg border border-charcoal/5 aspect-[4/3] relative overflow-hidden">
+                    <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>

@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal: #1a2744;
+  --color-slate-dark: #142038;
+  --color-navy: #0f1a30;
+  --color-amber: #C17817;
+  --color-amber-light: #d4922e;
+  --color-amber-dark: #a06210;
+  --color-cream: #F5F1EB;
+  --color-warm-gray: #EDE8E0;
+  --color-stone: #7a7570;
+  --color-stone-light: #a8a29e;
+
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-charcoal);
+    background: var(--color-cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--color-amber);
+    color: var(--color-charcoal);
+  }
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Smooth cursor follower */
+.cursor-glow {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(193, 120, 23, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 50;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Horizontal scroll section */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Text reveal */
+@keyframes reveal-up {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Magnetic button hover */
+.magnetic-btn {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-amber) 0%, var(--color-amber-light) 50%, var(--color-amber) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+/* Line draw animation */
+.line-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-stone);
+}
+
+/* Diagonal section cut */
+.diagonal-top {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+
+.diagonal-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}

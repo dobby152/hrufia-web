@@ -58,7 +58,7 @@ function HeroAnimationInner({ onComplete }: { onComplete: () => void }) {
       setTimeout(() => setActiveStage(2), 3000),
       setTimeout(() => setActiveStage(3), 4200),
       setTimeout(() => setActiveStage(4), 5500),
-      setTimeout(onComplete, 9500),
+      setTimeout(onComplete, 8500),
     ];
     return () => timers.forEach(clearTimeout);
   }, [onComplete]);
@@ -398,6 +398,21 @@ function HeroAnimationInner({ onComplete }: { onComplete: () => void }) {
         <motion.g variants={fadeIn(5.5, 1)}>
           <polygon points="520,170 400,300 400,390 520,250" fill="url(#lightRay)" />
         </motion.g>
+
+        {/* Completion checkmark */}
+        <motion.g variants={scaleIn(6.5)}>
+          <circle cx="400" cy="240" r="48" fill="#C17817" opacity="0.95" />
+          <circle cx="400" cy="240" r="52" fill="none" stroke="#C17817" strokeWidth="2" opacity="0.3" />
+        </motion.g>
+        <motion.path
+          d="M378 240 L393 256 L422 224"
+          stroke="#faf6f0"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          variants={draw(6.8, 0.5)}
+        />
 
         <defs>
           <radialGradient id="lightGlow">

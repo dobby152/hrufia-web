@@ -266,33 +266,15 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, x: -10 }}
-              animate={{ opacity: 1, y: 0, x: 0 }}
-              transition={{ delay: 6.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute -bottom-5 -left-5 bg-charcoal text-cream px-5 py-3 rounded-sm shadow-xl flex items-center gap-3"
-            >
-              <div className="w-8 h-8 bg-amber rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-charcoal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div>
-                <span className="font-display text-sm text-cream block leading-tight">Hotovo!</span>
-                <span className="text-[11px] text-cream/50">Rekonstrukce dokončena</span>
-              </div>
-            </motion.div>
-
             {/* Floating stat */}
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2, duration: 0.6 }}
-              className="absolute -bottom-4 -right-4 bg-amber text-charcoal px-4 py-2 rounded-sm shadow-lg animate-float"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.5, duration: 0.6 }}
+              className="absolute -right-6 top-1/3 bg-charcoal text-cream px-4 py-3 rounded-sm shadow-xl flex flex-col items-center gap-0.5"
             >
-              <span className="font-display text-2xl block leading-tight">98%</span>
-              <span className="text-[10px] font-medium tracking-wider uppercase opacity-70">Spokojenost</span>
+              <span className="font-display text-2xl leading-tight text-amber">98%</span>
+              <span className="text-[10px] font-medium tracking-wider uppercase text-cream/60">Spokojenost</span>
             </motion.div>
           </motion.div>
         </motion.div>

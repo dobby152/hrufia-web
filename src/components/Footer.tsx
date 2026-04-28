@@ -13,20 +13,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-5">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-11 h-11 bg-amber rounded-sm flex items-center justify-center">
-                <span className="text-charcoal font-display text-xl font-bold">H</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display text-2xl tracking-[0.15em] text-cream leading-none">
-                  HRUFIA
-                </span>
-                <span className="text-[9px] tracking-[0.3em] uppercase text-cream/30 leading-none mt-0.5">
-                  Stavební práce
-                </span>
-              </div>
+            <div className="mb-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo.png"
+                alt="HRUFIA"
+                className="h-20 w-auto object-contain"
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
             </div>
-            <p className="text-cream/40 max-w-sm leading-relaxed mb-8">
+            <p className="text-cream/70 max-w-sm leading-relaxed mb-8">
               Profesionální rekonstrukce bytů, malování a stěhování. Pracujeme
               poctivě, dodržujeme termíny a za naší prací si stojíme.
             </p>
@@ -34,17 +30,17 @@ export function Footer() {
             <div className="flex gap-6">
               <div className="flex flex-col items-center">
                 <span className="font-display text-2xl text-amber">30+</span>
-                <span className="text-[10px] uppercase tracking-wider text-cream/30">Let</span>
+                <span className="text-[10px] uppercase tracking-wider text-cream/60">Let</span>
               </div>
               <div className="w-px bg-cream/10" />
               <div className="flex flex-col items-center">
                 <span className="font-display text-2xl text-amber">200+</span>
-                <span className="text-[10px] uppercase tracking-wider text-cream/30">Projektů</span>
+                <span className="text-[10px] uppercase tracking-wider text-cream/60">Projektů</span>
               </div>
               <div className="w-px bg-cream/10" />
               <div className="flex flex-col items-center">
                 <span className="font-display text-2xl text-amber">98%</span>
-                <span className="text-[10px] uppercase tracking-wider text-cream/30">Spokojenost</span>
+                <span className="text-[10px] uppercase tracking-wider text-cream/60">Spokojenost</span>
               </div>
             </div>
           </div>
@@ -127,19 +123,19 @@ export function Footer() {
         </div>
 
         <div className="border-t border-cream/10 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-cream/25 text-sm">
+          <p className="text-cream/50 text-sm">
             &copy; {new Date().getFullYear()} HRUFIA s.r.o. Všechna práva vyhrazena.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-cream/25 text-sm">IČO: 07059744</span>
-            <span className="text-cream/15">·</span>
-            <Link href="/zasady-ochrany-osobnich-udaju" className="text-cream/25 hover:text-amber text-sm transition-colors">
+            <span className="text-cream/50 text-sm">IČO: 07059744</span>
+            <span className="text-cream/30">·</span>
+            <Link href="/zasady-ochrany-osobnich-udaju" className="text-cream/50 hover:text-amber text-sm transition-colors">
               Ochrana osobních údajů
             </Link>
-            <span className="text-cream/15">·</span>
+            <span className="text-cream/30">·</span>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-cream/25 hover:text-amber text-sm transition-colors flex items-center gap-1.5 group"
+              className="text-cream/50 hover:text-amber text-sm transition-colors flex items-center gap-1.5 group"
             >
               Zpět nahoru
               <svg

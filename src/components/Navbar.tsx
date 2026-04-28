@@ -29,29 +29,18 @@ export function Navbar() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-cream/90 backdrop-blur-xl shadow-sm"
+            ? "bg-white/95 backdrop-blur-xl shadow-sm border-b border-charcoal/5"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group relative z-10">
-            <motion.div
-              whileHover={{ rotate: 5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="w-11 h-11 bg-charcoal rounded-sm flex items-center justify-center group-hover:bg-amber transition-colors duration-300"
-            >
-              <span className="text-cream font-display text-xl font-bold group-hover:text-charcoal transition-colors duration-300">
-                H
-              </span>
-            </motion.div>
-            <div className="flex flex-col">
-              <span className="font-display text-xl tracking-[0.15em] text-charcoal leading-none">
-                HRUFIA
-              </span>
-              <span className="text-[9px] tracking-[0.3em] uppercase text-stone leading-none mt-0.5">
-                Stavební práce
-              </span>
-            </div>
+          <Link href="/" className="flex items-center relative z-10">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt="HRUFIA"
+              className="h-16 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop */}

@@ -7,7 +7,6 @@ import { HeroAnimation } from "@/components/HeroAnimation";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
 import { Marquee } from "@/components/Marquee";
-import { VisualizationWizard } from "@/components/VisualizationWizard";
 
 const stats = [
   { value: "200+", label: "Dokončených projektů" },
@@ -115,7 +114,6 @@ const processSteps = [
 ];
 
 export default function Home() {
-  const [wizardOpen, setWizardOpen] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -223,32 +221,6 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            {/* AI Visualization CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="mt-6"
-            >
-              <button
-                onClick={() => setWizardOpen(true)}
-                className="group relative w-full sm:w-auto bg-gradient-to-r from-amber to-amber-light text-charcoal px-10 py-5 font-semibold tracking-[0.1em] uppercase text-sm rounded-sm overflow-hidden shadow-lg shadow-amber/20 hover:shadow-xl hover:shadow-amber/30 transition-shadow duration-500"
-              >
-                <span className="relative z-10 flex items-center justify-center gap-3">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
-                  </svg>
-                  Chci vidět svoji rekonstrukci
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </span>
-                <div className="absolute inset-0 bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              </button>
-              <p className="text-stone-light text-xs mt-2 tracking-wide">
-                AI vizualizace powered by Nano Banana
-              </p>
-            </motion.div>
           </div>
 
           <motion.div
@@ -327,7 +299,7 @@ export default function Home() {
                 <div className="font-display text-5xl md:text-6xl text-amber mb-2 tracking-tight">
                   {s.value}
                 </div>
-                <div className="text-cream/50 text-sm tracking-wider uppercase">{s.label}</div>
+                <div className="text-cream/70 text-sm tracking-wider uppercase">{s.label}</div>
               </motion.div>
             ))}
           </div>
@@ -531,7 +503,7 @@ export default function Home() {
             <br />
             <span className="gradient-text">rekonstrukci?</span>
           </h2>
-          <p className="text-cream/50 text-lg md:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
+          <p className="text-cream/75 text-lg md:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
             Ozvěte se nám. Probereme vaše představy a připravíme nezávaznou
             cenovou nabídku do 48 hodin.
           </p>
@@ -545,7 +517,7 @@ export default function Home() {
             </Link>
             <a
               href="tel:+420123456789"
-              className="text-cream/60 hover:text-amber transition-colors duration-300 font-medium tracking-wide flex items-center gap-2"
+              className="text-cream/80 hover:text-amber transition-colors duration-300 font-medium tracking-wide flex items-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
@@ -556,11 +528,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* AI Visualization Wizard */}
-      <VisualizationWizard
-        isOpen={wizardOpen}
-        onClose={() => setWizardOpen(false)}
-      />
     </>
   );
 }

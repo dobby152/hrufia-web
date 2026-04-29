@@ -7,8 +7,8 @@ import { useState } from "react";
 const contactInfo = [
   {
     label: "Telefon",
-    value: "+420 123 456 789",
-    href: "tel:+420123456789",
+    value: "+420 775 237 973",
+    href: "tel:+420775237973",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
@@ -17,8 +17,8 @@ const contactInfo = [
   },
   {
     label: "E-mail",
-    value: "info@hrufia.cz",
-    href: "mailto:info@hrufia.cz",
+    value: "fiala.fr@seznam.cz",
+    href: "mailto:fiala.fr@seznam.cz",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -50,6 +50,10 @@ const contactInfo = [
 
 export default function KontaktPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [formData, setFormData] = useState({
+    jmeno: "", telefon: "", email: "", sluzba: "", zprava: "",
+  });
 
   return (
     <div className="pt-28 pb-24">
@@ -80,9 +84,22 @@ export default function KontaktPage() {
               </div>
             ) : (
               <form
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  setSubmitted(true);
+                  setSending(true);
+                  try {
+                    const res = await fetch("/api/poptavka", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_POPTAVKA_API_TOKEN}`,
+                      },
+                      body: JSON.stringify(formData),
+                    });
+                    if (res.ok) setSubmitted(true);
+                  } finally {
+                    setSending(false);
+                  }
                 }}
                 className="bg-white rounded-sm border border-charcoal/5 p-8 md:p-10 space-y-6"
               >
@@ -94,6 +111,8 @@ export default function KontaktPage() {
                     <input
                       type="text"
                       required
+                      value={formData.jmeno}
+                      onChange={(e) => setFormData((p) => ({ ...p, jmeno: e.target.value }))}
                       className="w-full px-4 py-3 bg-cream border border-charcoal/10 rounded-sm focus:outline-none focus:border-amber transition-colors"
                       placeholder="Jan Novák"
                     />
@@ -105,6 +124,8 @@ export default function KontaktPage() {
                     <input
                       type="tel"
                       required
+                      value={formData.telefon}
+                      onChange={(e) => setFormData((p) => ({ ...p, telefon: e.target.value }))}
                       className="w-full px-4 py-3 bg-cream border border-charcoal/10 rounded-sm focus:outline-none focus:border-amber transition-colors"
                       placeholder="+420 ..."
                     />
@@ -116,6 +137,8 @@ export default function KontaktPage() {
                   </label>
                   <input
                     type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
                     className="w-full px-4 py-3 bg-cream border border-charcoal/10 rounded-sm focus:outline-none focus:border-amber transition-colors"
                     placeholder="jan@email.cz"
                   />
@@ -124,7 +147,11 @@ export default function KontaktPage() {
                   <label className="block text-sm font-medium text-charcoal mb-2">
                     Typ služby
                   </label>
-                  <select className="w-full px-4 py-3 bg-cream border border-charcoal/10 rounded-sm focus:outline-none focus:border-amber transition-colors">
+                  <select
+                    value={formData.sluzba}
+                    onChange={(e) => setFormData((p) => ({ ...p, sluzba: e.target.value }))}
+                    className="w-full px-4 py-3 bg-cream border border-charcoal/10 rounded-sm focus:outline-none focus:border-amber transition-colors"
+                  >
                     <option value="">Vyberte službu...</option>
                     <option value="rekonstrukce">Rekonstrukce bytu</option>
                     <option value="malovani">Malování</option>
@@ -139,15 +166,18 @@ export default function KontaktPage() {
                   <textarea
                     required
                     rows={5}
+                    value={formData.zprava}
+                    onChange={(e) => setFormData((p) => ({ ...p, zprava: e.target.value }))}
                     className="w-full px-4 py-3 bg-cream border border-charcoal/10 rounded-sm focus:outline-none focus:border-amber transition-colors resize-none"
                     placeholder="Popište, co potřebujete – rozsah, termín, rozpočet..."
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-charcoal text-cream py-4 font-semibold tracking-wide uppercase text-sm hover:bg-amber hover:text-charcoal transition-all duration-300 rounded-sm"
+                  disabled={sending}
+                  className="w-full bg-charcoal text-cream py-4 font-semibold tracking-wide uppercase text-sm hover:bg-amber hover:text-charcoal transition-all duration-300 rounded-sm disabled:opacity-60"
                 >
-                  Odeslat poptávku
+                  {sending ? "Odesílám..." : "Odeslat poptávku"}
                 </button>
                 <p className="text-stone text-xs text-center">
                   Odesláním formuláře souhlasíte se zpracováním osobních údajů za účelem vyřízení poptávky.
@@ -193,10 +223,10 @@ export default function KontaktPage() {
             <div className="bg-charcoal rounded-sm p-8 text-center">
               <p className="text-cream/60 text-sm mb-2">Zavolejte nám</p>
               <a
-                href="tel:+420123456789"
+                href="tel:+420775237973"
                 className="font-display text-2xl text-amber hover:text-amber-light transition-colors"
               >
-                +420 123 456 789
+                +420 775 237 973
               </a>
               <p className="text-cream/40 text-sm mt-2">Po–Pá 7:00–17:00</p>
             </div>
